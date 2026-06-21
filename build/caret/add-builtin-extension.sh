@@ -42,10 +42,18 @@ fi
 DEST="${APP_ROOT}/extensions/${EXTENSION_ID}"
 echo "Bundling Caret extension as built-in -> ${DEST}"
 
-# Extract the vsix's extension/ payload into the built-in extensions dir.
+# Extract the WHOLE vsix, then copy its extension/ payload. We deliberately do NOT pass an
+# "extension/*" filter to unzip: its "*" wildcard does not cross "/" consistently across
+# platforms (the Windows CI runner's unzip only extracted top-level files, silently dropping
+# dist/extension.js and every other subdirectory). Extracting everything avoids that.
 TMP_DIR="$( mktemp -d )"
 trap 'rm -rf "${TMP_DIR}"' EXIT
-unzip -q "${CARET_VSIX}" "extension/*" -d "${TMP_DIR}"
+unzip -q "${CARET_VSIX}" -d "${TMP_DIR}"
+
+if [[ ! -d "${TMP_DIR}/extension" ]]; then
+  echo "ERROR: vsix has no extension/ folder after extraction — unexpected layout." >&2
+  exit 1
+fi
 
 rm -rf "${DEST}"
 mkdir -p "${DEST}"
@@ -57,4 +65,13 @@ if [[ ! -f "${DEST}/package.json" ]]; then
   exit 1
 fi
 
-echo "Caret extension bundled as built-in ($( node -p "require('./${DEST}/package.json').publisher + '.' + require('./${DEST}/package.json').name + '@' + require('./${DEST}/package.json').version" ))"
+# Guard against partial copies: the declared entry point (package.json "main") MUST exist,
+# or the extension fails to activate at runtime ("Cannot find module .../dist/extension.js").
+MAIN="$( node -p "require('./${DEST}/package.json').main || ''" )"
+if [[ -n "${MAIN}" && ! -f "${DEST}/${MAIN}" ]]; then
+  echo "ERROR: extension entry point '${MAIN}' missing after copy — bundle is incomplete." >&2
+  echo "Copied $( find "${DEST}" -type f | wc -l ) files; expected the full extension payload." >&2
+  exit 1
+fi
+
+echo "Caret extension bundled as built-in ($( node -p "require('./${DEST}/package.json').publisher + '.' + require('./${DEST}/package.json').name + '@' + require('./${DEST}/package.json').version" ), $( find "${DEST}" -type f | wc -l | tr -d ' ' ) files, main=${MAIN})"
