@@ -1,216 +1,144 @@
-<div id="vscodium-logo" align="center">
-    <br />
-    <img src="./icons/stable/codium_cnl.svg" alt="VSCodium Logo" width="200"/>
-    <h1>VSCodium</h1>
-    <h3>Free/Libre Open Source Software Binaries of Visual Studio Code</h3>
+<div align="center">
+  <h1>Caret IDE</h1>
+  <p><strong>An AI design tool in your IDE — where design and code are one.</strong></p>
+  <p>
+    <a href="https://github.com/precious112/caret-ide/releases/latest"><img src="https://img.shields.io/github/v/release/precious112/caret-ide?label=latest" alt="latest release"/></a>
+    <img src="https://img.shields.io/github/downloads/precious112/caret-ide/total?label=downloads" alt="downloads"/>
+    <a href="https://open-vsx.org/extension/caretAI/caret"><img src="https://img.shields.io/open-vsx/v/caretAI/caret?label=Open%20VSX" alt="Open VSX"/></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="license"/></a>
+  </p>
 </div>
 
-<div id="badges" align="center">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/precious112/Pstore_backend/refs/heads/master/media/media/caret_main_edit-ezgif.com-video-to-gif-converter.gif" width="100%" alt="Caret — edit your UI with AI on a live canvas" />
+</p>
 
-[![current release](https://img.shields.io/github/release/vscodium/vscodium.svg)](https://github.com/vscodium/vscodium/releases)
-[![license](https://img.shields.io/github/license/VSCodium/vscodium.svg)](https://github.com/VSCodium/vscodium/blob/master/LICENSE)
-[![Gitter](https://img.shields.io/gitter/room/vscodium/vscodium.svg)](https://gitter.im/VSCodium/Lobby)
-[![codium](https://snapcraft.io//codium/badge.svg)](https://snapcraft.io/codium)
-[![codium](https://snapcraft.io//codium/trending.svg?name=0)](https://snapcraft.io/codium)
-
-</div>
-
-**This is not a fork. This is a repository of scripts to automatically build [Microsoft's `vscode` repository](https://github.com/microsoft/vscode) into freely-licensed binaries with a community-driven default configuration.**
-
-## Table of Contents
-
-- [Download/Install](#download-install)
-  - [Install with Brew](#install-with-brew)
-  - [Install with Windows Package Manager (WinGet)](#install-with-winget)
-  - [Install with Chocolatey](#install-with-choco)
-  - [Install with Scoop](#install-with-scoop)
-  - [Install with snap](#install-with-snap)
-  - [Install with Package Manager](#install-with-package-manager)
-  - [Install on Arch Linux](#install-on-arch-linux)
-  - [Flatpak Option](#flatpak)
-- [Build](#build)
-- [Why Does This Exist](#why)
-- [More Info](#more-info)
-- [Supported Platforms](#supported-platforms)
-
-## <a id="download-install"></a>Download/Install
-
-:tada: :tada:
-Download latest release here:
-[stable](https://github.com/VSCodium/vscodium/releases) or
-[insiders](https://github.com/VSCodium/vscodium-insiders/releases)
-:tada: :tada:
-
-[More info / helpful tips are here.](https://github.com/VSCodium/vscodium/blob/master/docs/index.md)
-
-
-#### <a id="install-with-brew"></a>Install with Brew (Mac)
-
-If you are on a Mac and have [Homebrew](https://brew.sh/) installed:
-```bash
-# stable
-brew install --cask vscodium
-
-# insiders
-brew install --cask vscodium@insiders
-```
-
-#### <a id="install-with-winget"></a>Install with Windows Package Manager (WinGet)
-
-If you use Windows and have [Windows Package Manager](https://github.com/microsoft/winget-cli) installed:
-```cmd
-:: stable
-winget install -e --id VSCodium.VSCodium
-
-:: insider
-winget install -e --id VSCodium.VSCodium.Insiders
-```
-
-#### <a id="install-with-choco"></a>Install with Chocolatey (Windows)
-
-If you use Windows and have [Chocolatey](https://chocolatey.org) installed (thanks to [@Thilas](https://github.com/Thilas)):
-```cmd
-:: stable
-choco install vscodium
-
-:: insider
-choco install vscodium-insiders
-```
-
-#### <a id="install-with-scoop"></a>Install with Scoop (Windows)
-
-If you use Windows and have [Scoop](https://scoop.sh) installed:
-```bash
-scoop bucket add extras
-scoop install vscodium
-```
-
-#### <a id="install-with-snap"></a>Install with snap (GNU/Linux)
-
-VSCodium is available in the [Snap Store](https://snapcraft.io/) as [Codium](https://snapcraft.io/codium), thanks to the help of the [Snapcrafters](https://github.com/snapcrafters/codium) community.
-If your GNU/Linux distribution has support for [snaps](https://snapcraft.io/docs/installing-snapd):
-
-```bash
-snap install codium --classic
-```
-
-#### <a id="install-with-package-manager"></a>Install with Package Manager (GNU/Linux)
-
-You can always install using the downloads (deb, rpm, tar) on the releases page for [stable](https://github.com/VSCodium/vscodium/releases) or [insiders](https://github.com/VSCodium/vscodium-insiders/releases), but you can also install using your favorite package manager and get automatic updates.
-
-[@paulcarroty](https://github.com/paulcarroty) has set up a repository with instructions for `apt`, `dnf` and `zypper` [here](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo).
-
-Any issues installing VSCodium using your package manager should be directed to that repository's issue tracker.
-
-#### <a id="install-on-arch-linux"></a>Install on Arch Linux
-
-VSCodium is available in [AUR](https://wiki.archlinux.org/index.php/Arch_User_Repository), maintained by [@binex-dsk](https://github.com/binex-dsk) as package [vscodium-bin](https://aur.archlinux.org/packages/vscodium-bin/) (stable) and as [vscodium-insiders-bin](https://aur.archlinux.org/packages/vscodium-insiders-bin).
-
-If you want to save disk space by having VSCodium use the Electron system-wide, you also have [vscodium-electron](https://aur.archlinux.org/packages/vscodium-electron),
-maintained by [@m00nw4tch3r](https://aur.archlinux.org/account/m00nw4tch3r).
-
-An alternative package [vscodium-git](https://aur.archlinux.org/packages/vscodium-git/), maintained by [@cedricroijakkers](https://github.com/cedricroijakkers), is also available should you wish to compile from source yourself.
-
-#### <a id="flatpak"></a>Flatpak Option (GNU/Linux)
-
-VSCodium is available as a Flatpak app [here](https://flathub.org/apps/details/com.vscodium.codium) and the build repo is [here](https://github.com/flathub/com.vscodium.codium).
-If your distribution has support for [flatpak](https://flathub.org), and you have enabled the [flathub repo](https://flatpak.org/setup/):
-
-```bash
-flatpak install flathub com.vscodium.codium
-flatpak run com.vscodium.codium
-```
-
-## <a id="build"></a>Build
-
-Build instructions can be found [here](https://github.com/VSCodium/vscodium/blob/master/docs/howto-build.md)
-
-## <a id="why"></a>Why Does This Exist
-
-This repository contains build files to generate free release binaries of Microsoft's Visual Studio Code. When we speak of "free software", we're talking about freedom, not price.
-
-Microsoft's releases of Visual Studio Code are licensed under [this not-FLOSS license](https://code.visualstudio.com/license) and contain telemetry/tracking. According to [this comment](https://github.com/Microsoft/vscode/issues/60#issuecomment-161792005) from a Visual Studio Code maintainer:
-
-> When we [Microsoft] build Visual Studio Code, we do exactly this. We clone the vscode repository, we lay down a customized product.json that has Microsoft specific functionality (telemetry, gallery, logo, etc.), and then produce a build that we release under our license.
+> For decades, design and development have lived in separate worlds: you mock a screen in a design tool, then someone rebuilds it by hand in code — and the two drift apart from the moment they're created. Caret is built on a bet that **this divide no longer needs to exist.** AI is now powerful enough that the design *is* the code.
 >
-> When you clone and build from the vscode repo, none of these endpoints are configured in the default product.json. Therefore, you generate a "clean" build, without the Microsoft customizations, which is by default licensed under the MIT license
+> In Caret you describe and shape your UI on a live canvas inside your editor, and it stays real, version-controlled React the entire time — then you sync it straight into the app you ship. No separate design tool. No handoff. No drift. One source of truth that is design and code at once.
+>
+> It's for the people building the modern frontend — **designers moving into code, and frontend engineers who'd rather design where they already work.** As AI erases the line between designing and building, Caret is what's on the other side: **design and code, finally the same thing.**
 
-This repo exists so that you don't have to download+build from source. The build scripts in this repo clone Microsoft's vscode repo, run the build commands, and upload the resulting binaries to [GitHub releases](https://github.com/VSCodium/vscodium/releases). __These binaries are licensed under the MIT license. Telemetry is disabled.__
+> This is **Caret IDE** — the Caret extension bundled into a branded **VS Code (OSS) build based on [VSCodium](https://github.com/VSCodium/vscodium)**, so you get a ready-to-go editor with Caret already inside. The core extension lives at **[precious112/caret](https://github.com/precious112/caret)**.
 
-If you want to build from source yourself, head over to [Microsoft's vscode repo](https://github.com/Microsoft/vscode) and follow their [instructions](https://github.com/Microsoft/vscode/wiki/How-to-Contribute#build-and-run). This repo exists to make it easier to get the latest version of MIT-licensed Visual Studio Code.
+---
 
-Microsoft's build process (which we are running to build the binaries) does download additional files. Those packages downloaded during build are:
+## Download
 
-- Pre-built extensions from the GitHub:
-  - [ms-vscode.js-debug-companion](https://github.com/microsoft/vscode-js-debug-companion)
-  - [ms-vscode.js-debug](https://github.com/microsoft/vscode-js-debug)
-  - [ms-vscode.vscode-js-profile-table](https://github.com/microsoft/vscode-js-profile-visualizer)
-- From [Electron releases](https://github.com/electron/electron/releases) (using [gulp-atom-electron](https://github.com/joaomoreno/gulp-atom-electron))
-  - electron
-  - ffmpeg
+Grab the build for your platform (links always point to the newest release):
 
-## <a id="more-info"></a>More Info
+| Platform | Download |
+|----------|----------|
+| **macOS — Apple Silicon** (M1/M2/M3…) | [Caret-macOS-arm64.zip](https://github.com/precious112/caret-ide/releases/latest/download/Caret-macOS-arm64.zip) |
+| **macOS — Intel** | [Caret-macOS-x64.zip](https://github.com/precious112/caret-ide/releases/latest/download/Caret-macOS-x64.zip) |
+| **Windows** — installer (recommended) | [Caret-Windows-UserSetup-x64.exe](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Windows-UserSetup-x64.exe) |
+| **Windows** — system-wide installer | [Caret-Windows-Setup-x64.exe](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Windows-Setup-x64.exe) |
+| **Windows** — portable zip | [Caret-Windows-x64.zip](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Windows-x64.zip) |
+| **Linux** — Debian/Ubuntu (.deb) | [Caret-Linux-x64.deb](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Linux-x64.deb) |
+| **Linux** — Fedora/RHEL (.rpm) | [Caret-Linux-x64.rpm](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Linux-x64.rpm) |
+| **Linux** — AppImage (portable) | [Caret-Linux-x86_64.AppImage](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Linux-x86_64.AppImage) |
+| **Linux** — tarball | [Caret-Linux-x64.tar.gz](https://github.com/precious112/caret-ide/releases/latest/download/Caret-Linux-x64.tar.gz) |
 
-### Documentation
+## ⚠️ The builds are not code-signed yet — here's how to open them
 
-For more information on getting all the telemetry disabled, tips for migrating from Visual Studio Code to VSCodium and more, have a look at [the Docs page](https://github.com/VSCodium/vscodium/blob/master/docs/index.md) page.
+Caret IDE isn't signed with a paid OS code-signing certificate yet (those run **$99–$500/yr**, which we'll invest in once Caret gains traction). **The apps are completely safe** — your OS just shows a one-time warning because it can't see a signature. The most reliable fix is a single **terminal command** (this worked consistently across machines in testing — more dependable than clicking through the dialogs):
 
-### Troubleshooting
+### 🍎 macOS
+1. Unzip the download and drag **`Caret.app`** into **Applications**.
+2. Run this in **Terminal**, then open Caret normally:
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Caret.app
+   ```
 
-If you have any issue, please check [the Troubleshooting page](https://github.com/VSCodium/vscodium/blob/master/docs/troubleshooting.md) or the existing issues.
+### 🪟 Windows
+1. Download the installer.
+2. Open **PowerShell** and unblock it (this removes the "Mark of the Web" that triggers SmartScreen), then run the installer normally:
+   ```powershell
+   Unblock-File "$HOME\Downloads\Caret-Windows-UserSetup-x64.exe"
+   ```
+   > Using the portable zip instead? Unblock everything inside after extracting:
+   > ```powershell
+   > Get-ChildItem -Recurse "$HOME\Downloads\Caret-Windows-x64" | Unblock-File
+   > ```
 
-### Extensions and the Marketplace
+### 🐧 Linux
+No signing needed:
+```bash
+sudo dpkg -i Caret-Linux-x64.deb      # Debian/Ubuntu
+sudo rpm -i  Caret-Linux-x64.rpm      # Fedora/RHEL
+chmod +x Caret-Linux-x86_64.AppImage && ./Caret-Linux-x86_64.AppImage   # portable
+```
 
-According to the Visual Studio Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), _you may only install and use Marketplace Offerings with Visual Studio Products and Services._ For this reason, VSCodium uses [open-vsx.org](https://open-vsx.org/), an open source registry for Visual Studio Code extensions. See the [Extensions + Marketplace](https://github.com/VSCodium/vscodium/blob/master/docs/index.md#extensions-marketplace) section on the Docs page for more details.
+## Don't want to install an unsigned IDE? Use Caret in your existing editor
 
-Please note that some Visual Studio Code extensions have licenses that restrict their use to the official Visual Studio Code builds and therefore do not work with VSCodium. See [this note](https://github.com/VSCodium/vscodium/blob/master/docs/extensions.md#proprietary-debugging-tools) on the Docs page for what's been found so far and possible workarounds.
+Caret is also published as an extension, so you can add it to an editor you already have — no new app to install:
 
-### How are the VSCodium binaries built?
+- **Open VSX** (VSCodium, Cursor, Windsurf, Gitpod, code-server, …): open the **Extensions** panel, search **"Caret"**, and install — or get it here: **https://open-vsx.org/extension/caretAI/caret**
+- **VS Code Marketplace:** _coming soon_ — `[marketplace link placeholder]`
 
-If you would like to see the commands we run to build `vscode` into VSCodium binaries, have a look at the workflow files in `.github/workflows` for Windows, GNU/Linux and macOS. These build files call all the other scripts in the repo. If you find something that doesn't make sense, feel free to ask about it [on Gitter](https://gitter.im/VSCodium/Lobby).
+> **Microsoft VS Code** uses its own marketplace (not Open VSX). Until the Marketplace listing is live, VS Code users can download the `.vsix` from the Open VSX page above and install it via **Extensions → ⋯ → Install from VSIX…**.
 
-The builds are run every day, but exit early if there isn't a new release from Microsoft.
+The IDE simply ships this same extension pre-installed and configured, so the experience is identical either way.
 
-## <a id="supported-platforms"></a>Supported Platforms
+---
 
-The minimal version is limited by the core component Electron, you may want to check its [platform prerequisites](https://www.electronjs.org/docs/latest/development/build-instructions-gn#platform-prerequisites).
+## How it works
 
-- [x] macOS (`zip`, `dmg`) macOS 12 or newer x64
-- [x] macOS (`zip`, `dmg`) macOS 12 or newer arm64
-- [x] GNU/Linux x64 (`deb`, `rpm`, `AppImage`, `snap`, `tar.gz`)
-- [x] GNU/Linux arm64 (`deb`, `rpm`, `snap`, `tar.gz`)
-- [x] GNU/Linux armhf (`deb`, `rpm`, `tar.gz`)
-- [x] GNU/Linux riscv64 (`tar.gz`)
-- [x] GNU/Linux loong64 (`tar.gz`)
-- [x] GNU/Linux ppc64le (`tar.gz`)
-- [x] Windows 10 / Server 2012 R2 or newer x64
-- [x] Windows 10 / Server 2012 R2 or newer arm64
+Caret splits your frontend into two layers that live in the same repo:
 
-## <a id="thanks"></a>Special thanks
+- A **design layer**, standardized to React and stored under `.caret/`. This is where you design — pages, flows, shared components, and design tokens. Think "Figma frames as code," version-controlled in parallel with your app.
+- Your **application layer** — the app you actually ship, in any framework (React, Vue, Svelte, Angular, …). Caret stays unopinionated about it.
 
-<table>
-  <tr>
-    <td><a href="https://github.com/jaredreich" target="_blank">@jaredreich</a></td>
-    <td>for the logo</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/PalinuroSec" target="_blank">@PalinuroSec</a></td>
-    <td>for CDN and domain name</td>
-  </tr>
-  <tr>
-    <td><a href="https://www.macstadium.com" target="_blank"><img src="https://images.prismic.io/macstadium/66fbce64-707e-41f3-b547-241908884716_MacStadium_Logo.png?w=128&q=75" width="128" height="49" alt="MacStadium logo" /></a></td>
-    <td>for providing a Mac mini M1</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/daiyam" target="_blank">@daiyam</a></td>
-    <td>for macOS certificate</td>
-  </tr>
-  <tr>
-    <td><a href="https://signpath.org/" target="_blank"><img src="https://avatars.githubusercontent.com/u/34448643" height="30" alt="SignPath logo" /></a></td>
-    <td>free code signing on Windows provided by <a href="https://signpath.io/" target="_blank">SignPath.io</a>, certificate by <a href="https://signpath.org/" target="_blank">SignPath Foundation</a></td>
-  </tr>
-</table>
+You design in the first layer, then sync into the second. The design layer's predictable structure is what unlocks the live canvas, visual editing, flow simulation, and design→app sync below.
 
-## <a id="license"></a>License
+### A standardized design layer
 
-[MIT](https://github.com/VSCodium/vscodium/blob/master/LICENSE)
+Everything you design lives under `.caret/` as plain React: pages in `.caret/pages/`, reusable pieces in `.caret/components/` and `.caret/layouts/`, navigation in `.caret/flows/`, and design tokens in `.caret/tokens/`. Each page carries a small `meta.json` describing its title, type, states, and tags. Because the design layer is always React with a known shape, Caret can reason about your pages reliably no matter what framework your shipped app uses.
+
+### A token-driven design system
+
+A guided wizard captures the foundations of your design system — a **vibe** descriptor, **color** (brand + neutral character + semantic), **typography** (Google Fonts + scale ratio), **spacing**, and **radius** — and shows a live preview of representative components updating as you tune each one. Pick the character, Caret generates the scale, you override what you want. The result is saved as namespaced JSON under `.caret/tokens/` and injected into generation so every page stays visually consistent.
+
+### A live design canvas
+
+All your pages render on a zoomable, pannable canvas — a Figma-style overview of the whole product. The focused page runs as live, interactive React; the rest show as cached thumbnails so the canvas stays fast even with many pages. Click any page to mount it live, switch viewport presets (desktop / tablet / mobile) to check responsiveness, and pan back out to see how everything fits together.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/precious112/Pstore_backend/refs/heads/master/media/media/caret_res_sec_edit-ezgif.com-video-to-gif-converter.gif" width="100%" alt="Switching viewport presets to check responsiveness on the canvas" />
+</p>
+
+### Visual editing
+
+Edit the rendered UI directly. Right-click an element to change its **text**, **color**, or **image** inline — the change is written back to the exact line of source and reflected instantly via hot-reload, no AI round-trip needed. For anything structural, choose **"Edit with AI"**: Caret hands the model rich context about the element (its source location, component, and props) and applies the change. Element targeting is deterministic via stable `data-caret-id` attributes and AST-level source edits, so edits land precisely instead of guessing.
+
+> **Edit with AI** and all source/file edits are powered by [Cline](https://github.com/cline/cline), the open-source coding agent Caret is built on — it makes the precise code changes behind the scenes.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/precious112/Pstore_backend/refs/heads/master/media/media/caret_inline_edit_third_edit-ezgif.com-video-to-gif-converter.gif" width="100%" alt="Editing text, color, and images inline on the rendered UI" />
+</p>
+
+### Flows and simulation
+
+Define user journeys as flow graphs in `.caret/flows/*.flow.json`, referencing pages by ID. Overlay flow connections on the canvas to see how pages link together, restructure a flow by dragging an edge (Caret offers to update the underlying navigation to match), and enter **simulation mode** to click through your app in a device frame as a real user would — jumping between page states (empty, loading, error, success) with a state selector.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/precious112/Pstore_backend/refs/heads/master/media/media/caret_flow_edit-ezgif.com-video-to-gif-converter.gif" width="100%" alt="Defining and editing user flows between pages on the canvas" />
+</p>
+
+### Design → app sync
+
+When the design is ready, sync it into your real app. Caret tracks design changes against a git-based bookmark in `.caret/sync-state.json`, reads the current state of both layers, and produces a reviewable plan covering the UI translation plus any state, routing, or data changes the design implies. You review and accept; Caret applies the changes and advances the bookmark. Sync is one-way (design → app) and reversible — an undo restores your app files and rewinds the bookmark.
+
+---
+
+## Also a full coding agent
+
+Caret is built on the open-source [Cline](https://github.com/cline/cline) coding agent, so beyond design it's a complete autonomous coding assistant: bring any API and model, run terminal commands, create and edit files with reviewable diffs, drive a browser, extend itself with Model Context Protocol (MCP) tools, and roll back to checkpoints — all human-in-the-loop, with you approving each step.
+
+---
+
+## About
+
+Caret IDE is a standalone, branded build of **VS Code (OSS)** produced via [VSCodium](https://github.com/VSCodium/vscodium), with the Caret extension bundled as a built-in. It's licensed under the [MIT License](LICENSE); no Microsoft branding or telemetry is included, and the extension gallery is [Open VSX](https://open-vsx.org). The Caret extension itself is [Apache-2.0](https://github.com/precious112/caret) and built on [Cline](https://github.com/cline/cline).
+
+Build & maintenance docs: [README-CARET.md](README-CARET.md).
